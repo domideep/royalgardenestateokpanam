@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --color-bg-primary: #22090F;
+    --color-bg-secondary: #2C0D14;
+    --color-bg-card: #341019;
+    --color-charcoal: #F8F2F4;
+    --color-royal-navy: #180509;
+    --color-royal-navy-dark: #120306;
+    --color-royal-gold: #D4AF37;
+    --color-royal-gold-light: #F6E6B8;
+    --color-royal-gold-dark: #B88E1C;
+    --color-ruby: #9B111E;
+    --color-ruby-dark: #7A0C16;
+    --color-wine-dark: #22090F;
+    --color-wine-card: #2C0D14;
+    --color-wine-border: #4A1621;
+    --color-border-subtle: #4A1621;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #F8F2F4;
+    background-color: #22090F;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Editorial line clamp & subtle transition styles */
+.editorial-mask {
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #22090F;
+}
+::-webkit-scrollbar-thumb {
+  background: #5A1A24;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
