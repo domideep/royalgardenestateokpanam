@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Award, CheckCircle2, FileText, ArrowUpRight } from 'lucide-react';
-import { COMPANY_INFO, BROCHURE_IMAGE } from '../data/portfolioData';
+import { COMPANY_INFO, BROCHURE_IMAGE, CEO_IMAGE, CEO_FALLBACK_IMAGE } from '../data/portfolioData';
 
 interface AboutSectionProps {
   onOpenConnect: () => void;
@@ -84,13 +84,25 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConnect, onOpe
           {/* Narrative Column */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             <div className="space-y-5 text-base sm:text-lg text-[#D8BAC0] font-normal leading-relaxed">
-              <div className="p-4 bg-[#2C0D14] border-l-4 border-[#D4AF37] mb-2">
-                <span className="text-[11px] font-mono text-[#E5A91E] font-bold uppercase tracking-wider block mb-1">
-                  Message from the CEO – {COMPANY_INFO.ceo.name}
-                </span>
-                <p className="font-display text-lg sm:text-xl text-[#FFFFFF] font-bold leading-snug">
-                  "{COMPANY_INFO.ceo.quote}"
-                </p>
+              <div className="p-4 sm:p-5 bg-[#2C0D14] border-l-4 border-[#D4AF37] mb-2 flex items-start gap-4">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md bg-[#180509]">
+                  <img
+                    src={CEO_IMAGE}
+                    alt={COMPANY_INFO.ceo.name}
+                    className="w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = CEO_FALLBACK_IMAGE;
+                    }}
+                  />
+                </div>
+                <div className="flex-1">
+                  <span className="text-[11px] font-mono text-[#E5A91E] font-bold uppercase tracking-wider block mb-1">
+                    Message from the CEO – {COMPANY_INFO.ceo.name}
+                  </span>
+                  <p className="font-display text-base sm:text-lg text-[#FFFFFF] font-bold leading-snug">
+                    "{COMPANY_INFO.ceo.quote}"
+                  </p>
+                </div>
               </div>
 
               {COMPANY_INFO.extendedBio.map((paragraph, index) => (

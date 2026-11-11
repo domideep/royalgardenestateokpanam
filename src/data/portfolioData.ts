@@ -90,8 +90,13 @@ export interface PhilosophyPrinciple {
   quote: string;
 }
 
-export const BROCHURE_IMAGE = '/assets/aistudio/WhatsApp_Image_2026-11-11_at_00.17.39_86389a68.jpeg';
-export const CEO_IMAGE = '/src/assets/images/ceo_onyema_construction_1794361537767.jpg';
+// CEO portrait with official A1 Elite seal and helmet text
+import ceoImageBundle from '../assets/images/ceo_onyema_construction_1794361537767.jpg';
+
+export const BROCHURE_IMAGE: string = '/assets/aistudio/WhatsApp_Image_2026-11-11_at_00.17.39_86389a68.jpeg';
+export const CEO_IMAGE: string = (ceoImageBundle as string) || '/assets/aistudio/ceo_onyema_construction.jpg';
+export const CEO_FALLBACK_IMAGE: string = '/assets/aistudio/ceo_onyema_construction.jpg';
+export const CEO_ORIGINAL_IMAGE: string = '/assets/aistudio/Confident_Professional_on_the_Construction_Site_5b01a959.png';
 
 export const COMPANY_INFO = {
   name: 'A1 Elite Service & Properties Limited',

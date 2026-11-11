@@ -11,7 +11,7 @@ import {
   Check,
   X
 } from 'lucide-react';
-import { COMPANY_INFO, CEO_IMAGE } from '../data/portfolioData';
+import { COMPANY_INFO, CEO_IMAGE, CEO_FALLBACK_IMAGE, CEO_ORIGINAL_IMAGE } from '../data/portfolioData';
 
 interface HeroSectionProps {
   onExplorePortfolio: () => void;
@@ -24,6 +24,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onGetInTouch,
   onOpenBrochure
 }) => {
+  const [ceoImage, setCeoImage] = useState<string>(CEO_IMAGE);
   const [showContactCard, setShowContactCard] = useState(false);
   const [copiedNumber, setCopiedNumber] = useState<string | null>(null);
 
@@ -122,8 +123,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="relative w-full overflow-hidden bg-[#180509] shadow-2xl border-2 border-[#D4AF37]/50 group">
               <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden bg-[#180509]">
                 <img
-                  src={CEO_IMAGE}
-                  alt="Onyema Chukwuma - CEO of A1 Elite Service & Properties Limited"
+                  src={ceoImage}
+                  alt="Onyema Chukwuma - CEO of A1 Elite Service & Properties Limited on the construction site"
+                  onError={() => {
+                    if (ceoImage !== CEO_FALLBACK_IMAGE) {
+                      setCeoImage(CEO_FALLBACK_IMAGE);
+                    } else if (ceoImage !== CEO_ORIGINAL_IMAGE) {
+                      setCeoImage(CEO_ORIGINAL_IMAGE);
+                    }
+                  }}
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-102"
                 />
 
