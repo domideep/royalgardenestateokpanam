@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && mkdir -p .vercel/output && rm -rf .vercel/output/static && cp -r dist .vercel/output/static && echo '{\"version\":3}' > .vercel/output/config.json",
+    "build": "vite build && rm -rf build && cp -r dist build && mkdir -p .vercel/output && rm -rf .vercel/output/static && cp -r dist .vercel/output/static && echo '{\"version\":3}' > .vercel/output/config.json",
     "start": "node server.js",
     "preview": "vite preview",
-    "clean": "rm -rf dist server.js .vercel",
+    "clean": "rm -rf dist build server.js .vercel",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
